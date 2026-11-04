@@ -58,7 +58,7 @@
         /* Podcasts Grid */
         .podcasts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -111,24 +111,17 @@
             flex-grow: 1;
         }
 
-        /* Responsive Video Wrapper για να ταιριάζει με το στυλ σας */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Αναλογία */
-            height: 0;
-            overflow: hidden;
+        .audio-wrapper {
+            background: #f1f3f4;
+            padding: 0.75rem;
             border-radius: 8px;
-            background: #000;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            margin-top: auto;
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        audio {
             width: 100%;
-            height: 100%;
-            border: 0;
+            display: block;
+            outline: none;
         }
 
         footer {
@@ -173,9 +166,11 @@
                         <h4>Μύθοι του Αισώπου</h4>
                         <p>Ο διάσημος μύθος του Αισώπου που διδάσκει στα παιδιά τη σημασία της υπομονής, της επιμονής και της μετριοφροσύνης.</p>
                     </div>
-                    <div class="video-wrapper">
-                        <!-- Ενσωμάτωση Audio/Video από YouTube -->
-                        <iframe src="https://youtube.com" title="Ο Λαγός και η Χελώνα" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="audio-wrapper">
+                        <audio controls preload="none">
+                            <source src="https://archive.org" type="audio/mpeg">
+                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
+                        </audio>
                     </div>
                 </div>
 
@@ -187,8 +182,11 @@
                         <h4>Μύθοι του Αισώπου</h4>
                         <p>Ένα διαχρονικό ακουστικό παραμύθι για την αξία της προνοητικότητας, της σκληρής εργασίας και της προετοιμασίας.</p>
                     </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://youtube.com" title="Ο Τζίτζικας και ο Μέρμηγκας" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="audio-wrapper">
+                        <audio controls preload="none">
+                            <source src="https://archive.org" type="audio/mpeg">
+                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
+                        </audio>
                     </div>
                 </div>
 
@@ -196,12 +194,15 @@
                 <div class="podcast-card">
                     <div>
                         <span class="podcast-badge">Δωρεάν Ακρόαση</span>
-                        <h3>Ο Χάνσελ και η Γκρέτελ</h3>
-                        <h4>Αδελφοί Γκριμ</h4>
-                        <p>Το κλασικό, αγαπημένο παραμύθι των αδελφών Γκριμ σε μια προσεγμένη ακουστική έκδοση, ιδανικό για μικρά παιδιά.</p>
+                        <h3>Παραμύθι χωρίς όνομα</h3>
+                        <h4>Κλασική Λογοτεχνία</h4>
+                        <p>Μια όμορφη και διδακτική ιστορία γεμάτη περιπέτεια, ιδανική για να κρατήσει συντροφιά στους μικρούς μας αναγνώστες.</p>
                     </div>
-                    <div class="video-wrapper">
-                        <iframe src="https://youtube.com" title="Ο Χάνσελ και η Γκρέτελ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="audio-wrapper">
+                        <audio controls preload="none">
+                            <source src="https://archive.org" type="audio/mpeg">
+                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
+                        </audio>
                     </div>
                 </div>
 
