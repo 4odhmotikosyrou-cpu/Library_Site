@@ -273,7 +273,11 @@ h1,h2,h3,.day h3,.box h3{font-weight:600}
       </div>
     </div>
   </div>
-</section></main><footer><div class="wrap"><div><div class="footer-brand">Η Βιβλιοθήκη μας</div><span>Δανείζομαι · Διαβάζω · Φροντίζω · Επιστρέφω</span></div><a href="#xorigoi">Οι υποστηρικτές μας</a><a href="#epikoinonia">Επικοινωνία</a><a href="#arxi">Πίσω στην αρχή ↑</a></div></footer><script>
+</section></main>
+  <p style="text-align: center; font-size: 12px; margin: 24px 0 0;">
+  Σχεδιασμός ιστοσελίδας - Μανώλης Αργυρός
+</p>
+  <footer><div class="wrap"><div><div class="footer-brand">Η Βιβλιοθήκη μας</div><span>Δανείζομαι · Διαβάζω · Φροντίζω · Επιστρέφω</span></div><a href="#xorigoi">Οι υποστηρικτές μας</a><a href="#epikoinonia">Επικοινωνία</a><a href="#arxi">Πίσω στην αρχή ↑</a></div></footer><script>
 const menu=document.querySelector('.menu-toggle'),navlinks=document.getElementById('navlinks');
 menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',open);navlinks.classList.toggle('open',open)});
 navlinks.addEventListener('click',e=>{if(e.target.closest('a')){menu.setAttribute('aria-expanded','false');navlinks.classList.remove('open')}});
