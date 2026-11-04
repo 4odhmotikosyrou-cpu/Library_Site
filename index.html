@@ -58,7 +58,7 @@
         /* Podcasts Grid */
         .podcasts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -111,15 +111,24 @@
             flex-grow: 1;
         }
 
-        .audio-wrapper {
-            background: #f1f3f4;
-            padding: 0.5rem;
+        /* Responsive Video Wrapper για να ταιριάζει με το στυλ σας */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Αναλογία */
+            height: 0;
+            overflow: hidden;
             border-radius: 8px;
+            background: #000;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
         }
 
-        audio {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            outline: none;
+            height: 100%;
+            border: 0;
         }
 
         footer {
@@ -159,48 +168,40 @@
                 <!-- Κάρτα 1 -->
                 <div class="podcast-card">
                     <div>
-                        <span class="podcast-badge">Δωρεάν / Public Domain</span>
-                        <h3>Ο Μυλωνάς και οι τρεις γιοι του</h3>
-                        <h4>Κλασικό Παραμύθι</h4>
-                        <p>Ένα παραδοσιακό διδακτικό παραμύθι για τις αξίες της ζωής και την εξυπνάδα, κατάλληλο για παιδιά όλων των ηλικιών.</p>
+                        <span class="podcast-badge">Δωρεάν Ακρόαση</span>
+                        <h3>Ο Λαγός και η Χελώνα</h3>
+                        <h4>Μύθοι του Αισώπου</h4>
+                        <p>Ο διάσημος μύθος του Αισώπου που διδάσκει στα παιδιά τη σημασία της υπομονής, της επιμονής και της μετριοφροσύνης.</p>
                     </div>
-                    <div class="audio-wrapper">
-                        <audio controls preload="none">
-                            <source src="https://www.openbook.gr/audio/O_Mylonas_kai_oi_treis_gioi_toy.mp3" type="audio/mpeg">
-                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
-                        </audio>
+                    <div class="video-wrapper">
+                        <!-- Ενσωμάτωση Audio/Video από YouTube -->
+                        <iframe src="https://youtube.com" title="Ο Λαγός και η Χελώνα" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <!-- Κάρτα 2 -->
                 <div class="podcast-card">
                     <div>
-                        <span class="podcast-badge">Δωρεάν / Public Domain</span>
-                        <h3>Ο Λαγός και η Χελώνα</h3>
+                        <span class="podcast-badge">Δωρεάν Ακρόαση</span>
+                        <h3>Ο Τζίτζικας και ο Μέρμηγκας</h3>
                         <h4>Μύθοι του Αισώπου</h4>
-                        <p>Ο διάσημος μύθος του Αισώπου που διδάσκει στα παιδιά τη σημασία της υπομονής, της επιμονής και της μετριοφροσύνης.</p>
+                        <p>Ένα διαχρονικό ακουστικό παραμύθι για την αξία της προνοητικότητας, της σκληρής εργασίας και της προετοιμασίας.</p>
                     </div>
-                    <div class="audio-wrapper">
-                        <audio controls preload="none">
-                            <source src="https://www.openbook.gr/audio/O_lagos_kai_i_xelona.mp3" type="audio/mpeg">
-                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
-                        </audio>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com" title="Ο Τζίτζικας και ο Μέρμηγκας" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <!-- Κάρτα 3 -->
                 <div class="podcast-card">
                     <div>
-                        <span class="podcast-badge">Δωρεάν / Public Domain</span>
-                        <h3>Το τζιτζίκι και το μυρμήγκι</h3>
-                        <h4>Μύθοι του Αισώπου</h4>
-                        <p>Ένα διαχρονικό ακουστικό βιβλίο για την αξία της προνοητικότητας και της εργατικότητας μέσα από την κλασική ιστορία.</p>
+                        <span class="podcast-badge">Δωρεάν Ακρόαση</span>
+                        <h3>Ο Χάνσελ και η Γκρέτελ</h3>
+                        <h4>Αδελφοί Γκριμ</h4>
+                        <p>Το κλασικό, αγαπημένο παραμύθι των αδελφών Γκριμ σε μια προσεγμένη ακουστική έκδοση, ιδανικό για μικρά παιδιά.</p>
                     </div>
-                    <div class="audio-wrapper">
-                        <audio controls preload="none">
-                            <source src="https://www.openbook.gr/audio/To_tzitziki_kai_to_myrmigki.mp3" type="audio/mpeg">
-                            Το πρόγραμμα περιήγησής σας δεν υποστηρίζει την αναπαραγωγή ήχου.
-                        </audio>
+                    <div class="video-wrapper">
+                        <iframe src="https://youtube.com" title="Ο Χάνσελ και η Γκρέτελ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
