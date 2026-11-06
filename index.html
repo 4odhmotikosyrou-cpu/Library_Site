@@ -334,106 +334,30 @@ section{padding:60px 0}
           <h4 id="contact-form-title">Στείλε μας ένα μήνυμα</h4>
           <p id="contact-form-intro">Θέλεις να χαρίσεις βιβλία ή να μας ρωτήσεις κάτι; Συμπλήρωσε τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου. Το τηλέφωνο είναι προαιρετικό.</p>
           <!-- FormSubmit: απαιτείται επιβεβαίωση του email της βιβλιοθήκης μετά την πρώτη αποστολή από το δημοσιευμένο site. -->
-          <!-- Η φόρμα επικοινωνίας με προσθήκη id="contact-form" για την JavaScript -->
-<form id="contact-form" action="https://web3forms.com" method="POST">
-    
-    <!-- Το Web3Forms Access Key σας -->
-    <input type="hidden" name="access_key" value="403f3079-b263-421e-b9bd-682ea88e36b3">
-
-    <!-- Προστασία από Spam (Honeypot) -->
-    <div class="form-group" style="display: none;">
-        <label for="honeypot">Αφήστε αυτό το πεδίο κενό</label>
-        <input type="text" id="honeypot" name="botcheck">
-    </div>
-
-    <div class="form-group">
-        <label for="fullname">Ονοματεπώνυμο</label>
-        <input type="text" id="fullname" name="name" required>
-    </div>
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-
-    <div class="form-group">
-        <label for="phone">Τηλέφωνο (προαιρετικά)</label>
-        <input type="tel" id="phone" name="phone">
-    </div>
-
-    <div class="form-group">
-        <label for="message">Το μήνυμά σου</label>
-        <textarea id="message" name="message" required></textarea>
-    </div>
-
-    <!-- Το κουμπί αποστολής με id για να αλλάζουμε το κείμενο σε "Αποστολή..." -->
-    <button type="submit" id="submit-btn">Αποστολή μηνύματος →</button>
-    
-    <!-- Εδώ θα εμφανίζεται το αποτέλεσμα της αποστολής -->
-    <div id="form-result" style="margin-top: 15px; font-weight: bold; display: none;"></div>
-</form>
-
-<!-- Η JavaScript που κάνει τη μαγεία της AJAX αποστολής -->
-<script>
-const form = document.getElementById('contact-form');
-const result = document.getElementById('form-result');
-const submitBtn = document.getElementById('submit-btn');
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Σταματάει την κλασική ανανέωση της σελίδας
-    
-    // Εμφάνιση κατάστασης αναμονής
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Γίνεται αποστολή...";
-    result.style.display = "block";
-    result.style.color = "#333";
-    result.innerText = "Παρακαλώ περιμένετε...";
-
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    // Αποστολή των δεδομένων στο Web3Forms μέσω Fetch API (AJAX)
-    fetch('https://web3forms.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: json
-    })
-    .then(async (response) => {
-        let jsonResponse = await response.json();
-        if (response.status == 200) {
-            // Επιτυχής αποστολή
-            result.style.color = "green";
-            result.innerText = "✦ Το μήνυμά σας στάλθηκε με επιτυχία! Ευχαριστούμε.";
-            form.reset(); // Καθαρισμός των πεδίων της φόρμας
-        } else {
-            // Σφάλμα από την υπηρεσία
-            console.log(response);
-            result.style.color = "red";
-            result.innerText = jsonResponse.message || "Παρουσιάστηκε κάποιο πρόβλημα. Δοκιμάστε ξανά.";
-        }
-    })
-    .catch(error => {
-        // Σφάλμα δικτύου
-        console.log(error);
-        result.style.color = "red";
-        result.innerText = "Αποτυχία σύνδεσης. Παρακαλώ ελέγξτε το δίκτυό σας.";
-    })
-    .then(() => {
-        // Επαναφορά του κουμπιού στην αρχική του κατάσταση
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Αποστολή μηνύματος →";
-        
-        // Προαιρετικό: Κλείσιμο του μηνύματος επιτυχίας μετά από 5 δευτερόλεπτα
-        setTimeout(() => {
-            result.style.display = "none";
-        }, 5000);
-    });
-});
-</script>
+          <form class="contact-form" action="https://formsubmit.co/library4osyros@gmail.com" method="POST" accept-charset="UTF-8" aria-labelledby="contact-form-title" aria-describedby="contact-form-intro">
+            <input type="hidden" name="_subject" value="Νέο μήνυμα από τη σχολική βιβλιοθήκη">
+            <input type="hidden" name="_template" value="table">
+            <div class="contact-honey" aria-hidden="true"><label for="contact-website">Αφήστε αυτό το πεδίο κενό</label><input type="text" id="contact-website" name="_honey" tabindex="-1" autocomplete="off"></div>
+            <div class="contact-field">
+              <label for="contact-name">Ονοματεπώνυμο</label>
+              <input id="contact-name" type="text" name="name" autocomplete="name" required maxlength="120" placeholder="Το ονοματεπώνυμό σου">
+            </div>
+            <div class="contact-field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" type="email" name="email" autocomplete="email" required maxlength="254" placeholder="name@example.com">
+            </div>
+            <div class="contact-field contact-field-wide">
+              <label for="contact-phone">Τηλέφωνο <span>(προαιρετικά)</span></label>
+              <input id="contact-phone" type="tel" name="phone" autocomplete="tel" maxlength="40" placeholder="Αριθμός επικοινωνίας">
+            </div>
+            <div class="contact-field contact-field-wide">
+              <label for="contact-message">Το μήνυμά σου</label>
+              <textarea id="contact-message" name="message" rows="5" required maxlength="5000" placeholder="Γράψε το μήνυμά σου"></textarea>
+            </div>
+            <div class="contact-form-footer">
+              <button type="submit" class="button">Αποστολή μηνύματος <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
