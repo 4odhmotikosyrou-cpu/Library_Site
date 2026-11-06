@@ -521,6 +521,7 @@ window.__decorate=function(){
     const meta=document.createElement('div');meta.className='rec-meta';
     const code=document.createElement('span');code.className='rec-code';code.textContent='Κωδ. '+String(id).padStart(4,'0');meta.appendChild(code);
     const b=byId&&byId.get(id);
+    if(b&&String(b.pages||'').trim()){const pg=document.createElement('span');pg.className='rec-code';pg.textContent=String(b.pages).trim()+' σελ.';meta.appendChild(pg)}
     if(b){const s=document.createElement('span');s.className='rec-avail';if(b.available>0)s.textContent='Διαθέσιμο';else{s.classList.add('out');s.textContent='Δανεισμένο'}meta.appendChild(s)}
     copy.appendChild(meta);
   });
