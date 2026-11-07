@@ -148,7 +148,50 @@ section{padding:60px 0}
 #books .rec-code{font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 11px;border-radius:15px;background:var(--band);color:var(--ink);border:1px solid var(--line)}
 #books .rec-avail{font-size:12px;font-weight:700;padding:3px 11px;border-radius:15px;background:#e3e9d7;color:#1f5a3a}
 #books .rec-avail.out{background:#f4dace;color:#8a3a27}
-</style></head><body><a class="skip" href="#main">Πήγαινε στο περιεχόμενο</a><nav class="nav" aria-label="Μενού βιβλιοθήκης"><div class="wrap"><a class="brand" href="#arxi"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#164d43"/><path d="M24 15C18 11 12 13 10 14v21c6-3 10-2 14 1 4-3 8-4 14-1V14c-6-3-10-1-14 1Z" fill="none" stroke="#f6c758" stroke-width="2"/><path d="M24 15v21" stroke="#f6c758" stroke-width="2"/></svg><span>Η Βιβλιοθήκη μας<small>ΔΙΑΒΑΖΟΥΜΕ · ΑΝΑΚΑΛΥΠΤΟΥΜΕ · ΜΟΙΡΑΖΟΜΑΣΤΕ</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navlinks">Μενού ☰</button><div class="navlinks" id="navlinks"><a href="#ora">Δανεισμός</a><a href="#vivlia">Οι προτάσεις μας</a><a href="#katalogos">Κατάλογος</a><a href="#audiobooks">Audiobooks</a><a href="#draseis">Δράσεις</a><a href="#kanonismos">Κανονισμός</a><a href="#epikoinonia" class="nav-cta">Επικοινωνία ↗</a><a class="nav-ig" href="https://www.instagram.com/library4opeirasyros?mdxt=ZjNyb2RidXlxYXd5&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Η βιβλιοθήκη στο Instagram (ανοίγει σε νέα καρτέλα)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg><span class="nav-ig-text">Instagram</span></a></div></div></nav><header class="hero" id="arxi"><div class="wrap hero-grid"><div><div class="eyebrow">Η σχολική μας βιβλιοθήκη</div><h1>Μικρές σελίδες.<br><em>Μεγάλοι κόσμοι.</em></h1><p class="lead">Άνοιξε ένα βιβλίο και ξεκίνα ένα ταξίδι. Ένας χώρος για να διαβάζουμε, να ανακαλύπτουμε και να μοιραζόμαστε ιστορίες.</p><div class="actions"><a class="button" href="#vivlia">Βρες την επόμενη ιστορία σου <span aria-hidden="true">↗</span></a><a href="#ora" class="text-link">Ημέρες δανεισμού</a></div><div class="hero-bottom">Για όλα τα παιδιά του σχολείου μας</div></div><div class="hero-art" aria-hidden="true"><span class="art-label">Κάθε βιβλίο, μια αρχή.</span><span class="art-star">✳</span><div class="art-book one"><span class="cover-top">Άνοιξε τη φαντασία σου</span><strong>Ταξίδι<br>ως το<br>φεγγάρι</strong><div class="cover-moon"></div></div><div class="art-book two"><span class="cover-top">Μια ιστορία ανθίζει</span><strong>Ο κήπος<br>των<br>ιστοριών</strong><div class="cover-flower"></div></div><span class="art-dot"></span><div class="art-sticker"><b>Έλα</b>να διαβάσουμε<br>μαζί!</div></div></div></header><div class="facts-strip"><div class="wrap facts"><div class="fact"><b>2</b><span>βιβλία σε κάθε<br>δανεισμό</span></div><div class="fact"><b>15</b><span>ημέρες για να<br>τα απολαύσεις</span></div><div class="fact"><b>1</b><span>προσωπική κάρτα<br>για κάθε παιδί</span></div></div></div><main id="main"><section id="ora">
+</style><style id="koin-style">
+#koinotita .koin-panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:30px;max-width:760px}
+#koinotita .koin-login label,#koinotita .koin-mine-title{display:block;font-weight:700;font-size:15px;margin-bottom:9px}
+#koinotita .koin-login-row{display:flex;gap:12px;flex-wrap:wrap}
+#koinotita .koin-login-row input{flex:1 1 200px;min-width:0;border:1px solid #adbdb2;border-radius:10px;background:#fff;color:var(--ink);padding:12px 16px;font:600 20px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.22em;text-transform:uppercase}
+#koinotita input:focus-visible{outline:3px solid #b9d7c4;outline-offset:2px;border-color:var(--teal)}
+#koinotita .koin-who{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:15px;margin-bottom:16px}
+#koinotita .koin-who strong{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;font-size:16px}
+#koinotita .koin-link{background:none;border:0;padding:4px 0;color:var(--teal);font:600 14px var(--font-body);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+#koinotita .koin-hint{color:var(--muted);font-size:14px;margin-bottom:12px}
+#koinotita .koin-search{width:100%;border:1px solid #adbdb2;border-radius:10px;background:#fff;color:var(--ink);padding:12px 14px;font:16px/1.5 var(--font-body)}
+#koinotita .koin-results{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+#koinotita .koin-results button{width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;color:var(--ink);font:15px/1.4 var(--font-body);cursor:pointer}
+#koinotita .koin-results button:hover,#koinotita .koin-results button:focus-visible{border-color:var(--teal);background:#f3f8f4}
+#koinotita .koin-results small{display:block;color:var(--muted);font-size:13px}
+#koinotita .koin-mine-card{padding:14px 16px;border-left:5px solid var(--c6);background:#fff;border-radius:10px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+#koinotita .koin-mine-card strong{display:block;font-size:17px}
+#koinotita .koin-mine-card span{font-size:13px;color:var(--muted)}
+#koinotita .koin-msg{margin:14px 0 0;font-size:15px;min-height:0}
+#koinotita .koin-msg:empty{display:none}
+#koinotita .koin-msg.ok{color:#1f5a3a}
+#koinotita .koin-msg.err{color:#9b1c1c}
+#koinotita .koin-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+#koinotita .koin-empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;margin:0}
+#koinotita .book{border:1px solid var(--line)}
+#koinotita .book-cover{height:170px;min-height:170px;padding:22px 24px;justify-content:center}
+#koinotita .book-cover strong{font-size:21px;line-height:1.25;overflow-wrap:break-word;max-width:100%}
+#koinotita .book-copy{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+#koinotita .book h3{font-size:18px}
+#koinotita .book p{margin-top:8px}
+#koinotita .rec-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+#koinotita .rec-code{font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 11px;border-radius:15px;background:var(--band);color:var(--ink);border:1px solid var(--line)}
+#koinotita .rec-avail{font-size:12px;font-weight:700;padding:3px 11px;border-radius:15px;background:#e3e9d7;color:#1f5a3a}
+#koinotita .rec-avail.out{background:#f4dace;color:#8a3a27}
+#koinotita .koin-vote{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:18px}
+#koinotita .koin-hearts{font-weight:700;font-size:15px;color:var(--c6)}
+#koinotita .koin-heart{border:1.5px solid var(--c6);background:transparent;color:var(--c6);border-radius:30px;padding:9px 16px;font:700 14px var(--font-body);cursor:pointer}
+#koinotita .koin-heart:hover:not(:disabled){background:var(--c6);color:#fff}
+#koinotita .koin-heart:disabled{cursor:default;border-color:var(--line);color:var(--muted)}
+#koinotita .koin-heart.voted:disabled{background:var(--c6);border-color:var(--c6);color:#fff}
+@media(max-width:1000px){#koinotita .koin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){#koinotita .koin-grid{grid-template-columns:1fr}#koinotita .koin-panel{padding:20px}}
+</style>
+<style id="contact-status-style">.contact-form-footer{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.contact-status{margin:0;font-size:15px}.contact-status:empty{display:none}.contact-status.ok{color:#1f5a3a}.contact-status.err{color:#9b1c1c}input.contact-honey{display:none!important}</style></head><body><a class="skip" href="#main">Πήγαινε στο περιεχόμενο</a><nav class="nav" aria-label="Μενού βιβλιοθήκης"><div class="wrap"><a class="brand" href="#arxi"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#164d43"/><path d="M24 15C18 11 12 13 10 14v21c6-3 10-2 14 1 4-3 8-4 14-1V14c-6-3-10-1-14 1Z" fill="none" stroke="#f6c758" stroke-width="2"/><path d="M24 15v21" stroke="#f6c758" stroke-width="2"/></svg><span>Η Βιβλιοθήκη μας<small>ΔΙΑΒΑΖΟΥΜΕ · ΑΝΑΚΑΛΥΠΤΟΥΜΕ · ΜΟΙΡΑΖΟΜΑΣΤΕ</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="navlinks">Μενού ☰</button><div class="navlinks" id="navlinks"><a href="#ora">Δανεισμός</a><a href="#vivlia">Οι προτάσεις μας</a><a href="#katalogos">Κατάλογος</a><a href="#audiobooks">Audiobooks</a><a href="#draseis">Δράσεις</a><a href="#kanonismos">Κανονισμός</a><a href="#epikoinonia" class="nav-cta">Επικοινωνία ↗</a><a class="nav-ig" href="https://www.instagram.com/library4opeirasyros?mdxt=ZjNyb2RidXlxYXd5&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Η βιβλιοθήκη στο Instagram (ανοίγει σε νέα καρτέλα)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg><span class="nav-ig-text">Instagram</span></a></div></div></nav><header class="hero" id="arxi"><div class="wrap hero-grid"><div><div class="eyebrow">Η σχολική μας βιβλιοθήκη</div><h1>Μικρές σελίδες.<br><em>Μεγάλοι κόσμοι.</em></h1><p class="lead">Άνοιξε ένα βιβλίο και ξεκίνα ένα ταξίδι. Ένας χώρος για να διαβάζουμε, να ανακαλύπτουμε και να μοιραζόμαστε ιστορίες.</p><div class="actions"><a class="button" href="#vivlia">Βρες την επόμενη ιστορία σου <span aria-hidden="true">↗</span></a><a href="#ora" class="text-link">Ημέρες δανεισμού</a></div><div class="hero-bottom">Για όλα τα παιδιά του σχολείου μας</div></div><div class="hero-art" aria-hidden="true"><span class="art-label">Κάθε βιβλίο, μια αρχή.</span><span class="art-star">✳</span><div class="art-book one"><span class="cover-top">Άνοιξε τη φαντασία σου</span><strong>Ταξίδι<br>ως το<br>φεγγάρι</strong><div class="cover-moon"></div></div><div class="art-book two"><span class="cover-top">Μια ιστορία ανθίζει</span><strong>Ο κήπος<br>των<br>ιστοριών</strong><div class="cover-flower"></div></div><span class="art-dot"></span><div class="art-sticker"><b>Έλα</b>να διαβάσουμε<br>μαζί!</div></div></div></header><div class="facts-strip"><div class="wrap facts"><div class="fact"><b>2</b><span>βιβλία σε κάθε<br>δανεισμό</span></div><div class="fact"><b>15</b><span>ημέρες για να<br>τα απολαύσεις</span></div><div class="fact"><b>1</b><span>προσωπική κάρτα<br>για κάθε παιδί</span></div></div></div><main id="main"><section id="ora">
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">Δοκιμαστικό πρόγραμμα</div>
@@ -199,7 +242,34 @@ section{padding:60px 0}
       <div class="slider-footer"><div id="book-dots" class="slider-dots" aria-label="Θέσεις βιβλίων"></div><span id="book-position" class="slider-position" role="status" aria-live="polite" aria-atomic="true"></span></div>
     </div><noscript><p>Ενεργοποίησε τη JavaScript για να δεις τις προτάσεις ανά τάξη.</p></noscript><p class="note">Οι προτάσεις ανά τάξη είναι ενδεικτικές. Για τα κλασικά έργα, επιλέγουμε έκδοση κατάλληλη για την ηλικία και την αναγνωστική εμπειρία του παιδιού· μπορούμε πάντα να διαβάζουμε μαζί με έναν ενήλικα. Τη διαθεσιμότητα κάθε τίτλου την ελέγχουμε στον <a href="#katalogos">κατάλογο της βιβλιοθήκης</a>.</p>
   </div>
-</section><section id="audiobooks" aria-labelledby="audio-title"><div class="wrap">
+</section>
+<section id="koinotita" class="tint" aria-labelledby="koin-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Προτείνουν οι γονείς και τα παιδιά</div>
+      <h2 id="koin-title">Τι θέλουμε να διαβάσουμε;</h2>
+      <p>Κάθε οικογένεια προτείνει ένα βιβλίο που υπάρχει στη βιβλιοθήκη μας και δίνει μια καρδούλα ❤ στις προτάσεις των άλλων που της αρέσουν. Χρειάζεσαι τον προσωπικό κωδικό των 6 χαρακτήρων που σου έδωσε η βιβλιοθήκη.</p>
+    </div>
+    <div class="koin-panel" id="koin-panel">
+      <form id="koin-login" class="koin-login" novalidate>
+        <label for="koin-code">Ο κωδικός σου</label>
+        <div class="koin-login-row">
+          <input id="koin-code" type="text" maxlength="12" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="A1B2C3">
+          <button type="submit" class="button">Είσοδος</button>
+        </div>
+      </form>
+      <div id="koin-account" hidden>
+        <div class="koin-who"><span>Συνδέθηκες με τον κωδικό <strong id="koin-who-code"></strong></span><button type="button" id="koin-logout" class="koin-link">Αποσύνδεση</button></div>
+        <div id="koin-mine"></div>
+      </div>
+      <p id="koin-msg" class="koin-msg" role="status" aria-live="polite"></p>
+    </div>
+    <div class="koin-grid" id="koin-grid" aria-live="polite"><p class="koin-empty">Φόρτωση προτάσεων…</p></div>
+    <noscript><p>Ενεργοποίησε τη JavaScript για να δεις και να ψηφίσεις τις προτάσεις.</p></noscript>
+    <p class="note">Κάθε βιβλίο ψηφίζεται μία φορά από κάθε κωδικό και η ψήφος δεν αλλάζει. Δεν ζητάμε ονόματα ή άλλα προσωπικά στοιχεία. Έχασες τον κωδικό σου; Ζήτησέ τον ξανά από τις υπεύθυνες της βιβλιοθήκης.</p>
+  </div>
+</section>
+<section id="audiobooks" aria-labelledby="audio-title"><div class="wrap">
 <div class="sec-head"><span class="tag">Ιστορίες για να ακούς</span><h2 id="audio-title">Άκουσε μια ιστορία</h2><p>Παιδικά audiobooks στα ελληνικά. Διάλεξε μια ιστορία και πάτησε «Άκουσέ το».</p></div>
 <div class="audio-grid">
 <article class="audio-card">
@@ -333,11 +403,11 @@ section{padding:60px 0}
         <div class="contact-form-wrap form-right">
           <h4 id="contact-form-title">Στείλε μας ένα μήνυμα</h4>
           <p id="contact-form-intro">Θέλεις να χαρίσεις βιβλία ή να μας ρωτήσεις κάτι; Συμπλήρωσε τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου. Το τηλέφωνο είναι προαιρετικό.</p>
-          <!-- FormSubmit: απαιτείται επιβεβαίωση του email της βιβλιοθήκης μετά την πρώτη αποστολή από το δημοσιευμένο site. -->
-          <form class="contact-form" action="https://formsubmit.co/library4osyros@gmail.com" method="POST" accept-charset="UTF-8" aria-labelledby="contact-form-title" aria-describedby="contact-form-intro">
-            <input type="hidden" name="_subject" value="Νέο μήνυμα από τη σχολική βιβλιοθήκη">
-            <input type="hidden" name="_template" value="table">
-            <div class="contact-honey" aria-hidden="true"><label for="contact-website">Αφήστε αυτό το πεδίο κενό</label><input type="text" id="contact-website" name="_honey" tabindex="-1" autocomplete="off"></div>
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8" aria-labelledby="contact-form-title" aria-describedby="contact-form-intro">
+            <input type="hidden" name="access_key" value="403f3079-b263-421e-b9bd-682ea88e36b3">
+            <input type="hidden" name="subject" value="Νέο μήνυμα από τη σχολική βιβλιοθήκη">
+            <input type="hidden" name="from_name" value="Ιστοσελίδα σχολικής βιβλιοθήκης">
+            <input type="checkbox" name="botcheck" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="contact-field">
               <label for="contact-name">Ονοματεπώνυμο</label>
               <input id="contact-name" type="text" name="name" autocomplete="name" required maxlength="120" placeholder="Το ονοματεπώνυμό σου">
@@ -356,6 +426,7 @@ section{padding:60px 0}
             </div>
             <div class="contact-form-footer">
               <button type="submit" class="button">Αποστολή μηνύματος <span aria-hidden="true">→</span></button>
+              <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
             </div>
           </form>
         </div>
@@ -527,11 +598,167 @@ window.__decorate=function(){
   });
 };
 window.__decorate();
-fetch(CATALOG_API,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{
+window.__catalogPromise=fetch(CATALOG_API,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
+window.__catalogPromise.then(d=>{
   all=d.books||[];byId=new Map(all.map(b=>[b.id,b]));window.__decorate();
   (d.categories||[]).forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;catEl.appendChild(o)});
   (d.classes||[]).forEach(c=>{const l=document.createElement('label');l.className='cat-chip';const i=document.createElement('input');i.type='checkbox';i.value=c;i.addEventListener('change',apply);l.append(i,document.createTextNode(c+' τάξη'));classesEl.appendChild(l)});
   apply();
 }).catch(()=>{setState('Ο κατάλογος δεν είναι διαθέσιμος αυτή τη στιγμή. Δοκίμασε ξανά αργότερα.')});
+})();
+</script><script>
+/* ===== Προτείνουν οι γονείς και τα παιδιά: ψηφοφορία με κωδικό ===== */
+(function(){
+const API=CATALOG_API.replace(/\/books$/,'/community');
+const $=id=>document.getElementById(id);
+const grid=$('koin-grid'),panel=$('koin-panel'),loginForm=$('koin-login'),codeEl=$('koin-code'),account=$('koin-account'),mine=$('koin-mine'),msgEl=$('koin-msg');
+const colors=['--c1','--c3','--c4','--c5','--c6','--c2'];
+let catalog=new Map(),books=[],proposals=[],open=true,failed=false,me=null;
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ς/g,'σ');
+const cleanCode=s=>String(s||'').toUpperCase().replace(/[^A-Z0-9ΑΒϹАВС]/g,'');
+const store={get(){try{return localStorage.getItem('koinotita-code')}catch(e){return null}},set(v){try{v?localStorage.setItem('koinotita-code',v):localStorage.removeItem('koinotita-code')}catch(e){}}};
+const pad=id=>String(id).padStart(4,'0');
+function say(text,kind){msgEl.textContent=text||'';msgEl.className='koin-msg'+(kind?' '+kind:'')}
+async function call(path,body){
+  const r=await fetch(API+path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{headers:{Accept:'application/json'}});
+  let d={};try{d=await r.json()}catch(e){}
+  return {ok:r.ok&&d.ok!==false,status:r.status,data:d};
+}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+
+/* ---------- κάρτες προτάσεων ---------- */
+function card(p){
+  const b=catalog.get(p.book_id);if(!b)return null;
+  const a=el('article','book');a.style.setProperty('--tc','var('+colors[b.id%6]+')');
+  const cv=el('div','book-cover');cv.setAttribute('aria-hidden','true');
+  cv.append(el('span','', 'Κωδ. '+pad(b.id)),el('strong','',b.title),el('small','',b.authors.join(', ')));
+  const copy=el('div','book-copy');
+  copy.append(el('h3','',b.title));
+  if(b.authors.length)copy.append(el('span','au',b.authors.join(', ')));
+  if(b.categories.length)copy.append(el('p','','Κατηγορία: '+b.categories.join(', ')+'.'));
+  const meta=el('div','rec-meta');
+  meta.append(el('span','rec-code','Κωδ. '+pad(b.id)));
+  if(String(b.pages||'').trim())meta.append(el('span','rec-code',String(b.pages).trim()+' σελ.'));
+  const av=el('span','rec-avail'+(b.available>0?'':' out'),b.available>0?'Διαθέσιμο':'Δανεισμένο');meta.append(av);
+  copy.append(meta);
+  const vote=el('div','koin-vote');
+  const hearts=el('span','koin-hearts','❤ '+p.hearts);hearts.setAttribute('aria-label',p.hearts+' καρδούλες');
+  const btn=el('button','koin-heart');btn.type='button';
+  const mineBook=me&&me.suggestion===p.book_id,voted=me&&me.votes.includes(p.book_id);
+  if(!open){btn.textContent='Η ψηφοφορία έκλεισε';btn.disabled=true}
+  else if(mineBook){btn.textContent='Η πρότασή σου';btn.disabled=true}
+  else if(voted){btn.textContent='❤ Ψήφισες';btn.classList.add('voted');btn.disabled=true}
+  else{btn.textContent='♡ Ψηφίζω';btn.setAttribute('aria-label','Ψηφίζω το βιβλίο '+b.title);btn.addEventListener('click',()=>vote_(p.book_id,btn))}
+  vote.append(hearts,btn);copy.append(vote);a.append(cv,copy);return a;
+}
+function renderGrid(){
+  grid.replaceChildren();
+  if(failed){grid.append(el('p','koin-empty','Η ψηφοφορία δεν είναι διαθέσιμη αυτή τη στιγμή. Δοκίμασε ξανά αργότερα.'));return}
+  const cards=proposals.map(card).filter(Boolean);
+  if(!cards.length){grid.append(el('p','koin-empty','Δεν έχει προταθεί ακόμα κανένα βιβλίο. Γίνε ο πρώτος!'));return}
+  cards.forEach(c=>grid.appendChild(c));
+}
+
+/* ---------- πάνελ λογαριασμού ---------- */
+function renderMine(){
+  mine.replaceChildren();
+  if(!open){mine.append(el('p','koin-hint','Η ψηφοφορία είναι κλειστή αυτή τη στιγμή. Μπορείς να δεις τις προτάσεις.'));return}
+  if(me.suggestion){
+    const b=catalog.get(me.suggestion);
+    mine.append(el('div','koin-mine-title','Η πρότασή σου'));
+    const c=el('div','koin-mine-card');
+    c.append(el('strong','',b?b.title:'Βιβλίο '+pad(me.suggestion)),el('span','',(b?b.authors.join(', ')+' · ':'')+'Κωδ. '+pad(me.suggestion)));
+    mine.append(c,el('p','koin-hint','Δώσε τώρα καρδούλα ❤ στις προτάσεις των άλλων που σου αρέσουν. Κάθε βιβλίο ψηφίζεται μία φορά.'));
+    mine.lastChild.style.marginTop='12px';return;
+  }
+  mine.append(el('div','koin-mine-title','Πρότεινε ένα βιβλίο'));
+  mine.append(el('p','koin-hint','Διάλεξε ένα βιβλίο που υπάρχει στη βιβλιοθήκη μας. Επιτρέπεται μία πρόταση και δεν αλλάζει μετά.'));
+  const input=el('input','koin-search');input.type='search';input.placeholder='Γράψε τίτλο, συγγραφέα ή κωδικό βιβλίου';input.setAttribute('aria-label','Αναζήτηση βιβλίου για πρόταση');input.autocomplete='off';
+  const list=el('ul','koin-results');list.setAttribute('aria-live','polite');
+  mine.append(input,list);
+  let t;input.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>search(input.value,list),150)});
+}
+function search(text,list){
+  list.replaceChildren();
+  const q=norm(text.trim());if(q.length<2)return;
+  const proposed=new Set(proposals.map(p=>p.book_id));
+  const codeQ=/^\d{1,4}$/.test(q)?parseInt(q,10):null;
+  const found=books.filter(b=>!proposed.has(b.id)&&(b.id===codeQ||norm(b.title+' '+b.authors.join(' ')).includes(q))).slice(0,8);
+  if(!found.length){const li=el('li','koin-hint','Δεν βρέθηκε βιβλίο που να μην έχει ήδη προταθεί. Δοκίμασε άλλες λέξεις.');list.append(li);return}
+  found.forEach(b=>{
+    const li=document.createElement('li'),btn=el('button','');btn.type='button';
+    btn.append(document.createTextNode(b.title),el('small','',(b.authors.join(', ')||'—')+' · Κωδ. '+pad(b.id)));
+    btn.addEventListener('click',()=>propose_(b));li.append(btn);list.append(li);
+  });
+}
+function showAccount(){
+  loginForm.hidden=true;account.hidden=false;$('koin-who-code').textContent=me.code;renderMine();
+}
+function showLogin(){account.hidden=true;loginForm.hidden=false}
+
+/* ---------- ενέργειες ---------- */
+async function login(code,silent){
+  let res;try{res=await call('/login',{code})}catch(e){if(!silent)say('Δεν υπάρχει σύνδεση με τη βιβλιοθήκη. Δοκίμασε ξανά.','err');return}
+  if(!res.ok){
+    if(silent&&(res.status===404||res.status===403))store.set(null);
+    if(!silent)say(res.data.message||'Κάτι πήγε στραβά. Δοκίμασε ξανά.','err');return;
+  }
+  me={code:res.data.code,suggestion:res.data.suggestion,votes:res.data.votes||[]};open=res.data.open!==false;
+  store.set(me.code);say('');showAccount();renderGrid();
+}
+async function propose_(b){
+  if(!confirm('Να προτείνεις το βιβλίο «'+b.title+'»;\nΗ πρόταση δίνεται μία φορά και δεν αλλάζει.'))return;
+  let res;try{res=await call('/propose',{code:me.code,book_id:b.id})}catch(e){say('Δεν υπάρχει σύνδεση. Δοκίμασε ξανά.','err');return}
+  if(!res.ok){say(res.data.message||'Η πρόταση δεν καταχωρήθηκε.','err');if(res.data.error==='already_proposed')await refresh();return}
+  me.suggestion=res.data.suggestion;me.votes=res.data.votes||me.votes;
+  if(!proposals.some(p=>p.book_id===b.id))proposals.unshift({book_id:b.id,hearts:0});
+  say('Η πρότασή σου καταχωρήθηκε. Ευχαριστούμε!','ok');renderMine();renderGrid();
+}
+async function vote_(bookId,btn){
+  if(!me){say('Βάλε πρώτα τον κωδικό σου για να ψηφίσεις.','err');codeEl.focus();panel.scrollIntoView({behavior:'smooth',block:'center'});return}
+  btn.disabled=true;
+  let res;try{res=await call('/vote',{code:me.code,book_id:bookId})}catch(e){btn.disabled=false;say('Δεν υπάρχει σύνδεση. Δοκίμασε ξανά.','err');return}
+  if(!res.ok){say(res.data.message||'Η ψήφος δεν καταχωρήθηκε.','err');if(res.data.error==='already_voted'){if(!me.votes.includes(bookId))me.votes.push(bookId)}renderGrid();return}
+  me.votes=res.data.votes||me.votes;const p=proposals.find(x=>x.book_id===bookId);if(p)p.hearts=res.data.hearts;
+  say('Η καρδούλα σου δόθηκε!','ok');renderGrid();
+}
+async function refresh(){
+  try{const res=await call('/proposals');proposals=res.data.proposals||[];open=res.data.open!==false;failed=false}catch(e){failed=true}
+  renderGrid();
+}
+
+loginForm.addEventListener('submit',e=>{
+  e.preventDefault();const code=cleanCode(codeEl.value);
+  if(code.length<6){say('Ο κωδικός έχει 6 χαρακτήρες.','err');codeEl.focus();return}
+  login(code,false);
+});
+$('koin-logout').addEventListener('click',()=>{me=null;store.set(null);codeEl.value='';say('');showLogin();renderGrid()});
+
+/* ---------- εκκίνηση ---------- */
+Promise.all([window.__catalogPromise,call('/proposals')]).then(([d,res])=>{
+  books=d.books||[];catalog=new Map(books.map(b=>[b.id,b]));
+  proposals=res.data.proposals||[];open=res.data.open!==false;
+  renderGrid();
+  const saved=store.get();if(saved)login(saved,true);
+}).catch(()=>{failed=true;panel.hidden=true;renderGrid()});
+})();
+</script>
+<script>
+/* Φόρμα επικοινωνίας (Web3Forms): αποστολή χωρίς αλλαγή σελίδας */
+(function(){
+const form=document.getElementById('contact-form');if(!form)return;
+const status=document.getElementById('contact-status'),btn=form.querySelector('button[type=submit]');
+const label=btn.innerHTML;
+form.addEventListener('submit',async e=>{
+  e.preventDefault();status.textContent='';status.className='contact-status';
+  btn.disabled=true;btn.textContent='Αποστολή…';
+  try{
+    const r=await fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
+    const d=await r.json().catch(()=>({}));
+    if(r.ok&&d.success){form.reset();status.textContent='Ευχαριστούμε! Το μήνυμά σου στάλθηκε και θα επικοινωνήσουμε μαζί σου.';status.classList.add('ok')}
+    else throw new Error(d.message||r.status);
+  }catch(err){status.textContent='Το μήνυμα δεν στάλθηκε. Δοκίμασε ξανά ή γράψε μας στο library4osyros@gmail.com.';status.classList.add('err')}
+  finally{btn.disabled=false;btn.innerHTML=label}
+});
 })();
 </script></body></html>
