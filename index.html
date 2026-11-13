@@ -627,6 +627,7 @@ function card(b){
   const au=document.createElement('div');au.className='cat-au';au.textContent=b.authors.join(', ')||'—';
   const meta=document.createElement('div');meta.className='cat-meta';
   [['Κωδ. '+b.code],[b.year],[b.pages?b.pages+' σελ.':'']].forEach(([t])=>{if(t){const s=document.createElement('span');s.textContent=t;meta.appendChild(s)}});
+  if(typeof b.times_borrowed==='number'){const s=document.createElement('span');s.textContent=window.timesText(b.times_borrowed);meta.appendChild(s)}
   const av=document.createElement('span');const ok=b.available>0;av.className='cat-avail'+(ok?'':' out');av.textContent=ok?'Διαθέσιμο ('+b.available+'/'+b.quantity+')':'Δανεισμένο';
   const tags=document.createElement('div');tags.className='cat-tags';
   b.categories.concat(b.classes.map(c=>c+' τάξη')).forEach(t=>{const s=document.createElement('span');s.className='cat-tag';s.textContent=t;tags.appendChild(s)});
@@ -666,11 +667,13 @@ window.__decorate=function(){
     const code=document.createElement('span');code.className='rec-code';code.textContent='Κωδ. '+String(id).padStart(4,'0');meta.appendChild(code);
     const b=byId&&byId.get(id);
     if(b&&String(b.pages||'').trim()){const pg=document.createElement('span');pg.className='rec-code';pg.textContent=String(b.pages).trim()+' σελ.';meta.appendChild(pg)}
+    if(b&&typeof b.times_borrowed==='number'){const t=document.createElement('span');t.className='rec-code';t.textContent=window.timesText(b.times_borrowed);meta.appendChild(t)}
     if(b){const s=document.createElement('span');s.className='rec-avail';if(b.available>0)s.textContent='Διαθέσιμο';else{s.classList.add('out');s.textContent='Δανεισμένο'}meta.appendChild(s)}
     copy.appendChild(meta);
   });
 };
 window.__decorate();
+window.timesText=function(n){return n>0?'Δανείστηκε '+n+(n===1?' φορά':' φορές'):'Δεν έχει δανειστεί ακόμη'};
 window.__catalogPromise=fetch(CATALOG_API,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
 window.__catalogPromise.then(d=>{
   all=d.books||[];byId=new Map(all.map(b=>[b.id,b]));window.__decorate();
@@ -712,6 +715,7 @@ function card(p){
   const meta=el('div','rec-meta');
   meta.append(el('span','rec-code','Κωδ. '+pad(b.id)));
   if(String(b.pages||'').trim())meta.append(el('span','rec-code',String(b.pages).trim()+' σελ.'));
+  if(typeof b.times_borrowed==='number')meta.append(el('span','rec-code',window.timesText(b.times_borrowed)));
   const av=el('span','rec-avail'+(b.available>0?'':' out'),b.available>0?'Διαθέσιμο':'Δανεισμένο');meta.append(av);
   copy.append(meta);
   const vote=el('div','koin-vote');
