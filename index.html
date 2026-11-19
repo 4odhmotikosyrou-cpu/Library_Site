@@ -234,6 +234,51 @@ section{padding:60px 0}
     </div><noscript><p>Ενεργοποίησε τη JavaScript για να δεις τα πιο διαβασμένα βιβλία ανά τάξη.</p></noscript><p class="note">Η λίστα προκύπτει από τους δανεισμούς των μαθητών κάθε τάξης. Όταν δεν υπάρχουν ακόμη αρκετοί δανεισμοί, συμπληρώνεται με βιβλία της βιβλιοθήκης. Τη διαθεσιμότητα κάθε τίτλου την ελέγχουμε στον <a href="#katalogos">κατάλογο της βιβλιοθήκης</a>.</p>
   </div>
 </section>
+<section id="statistika" aria-labelledby="stat-title">
+<style>
+#statistika .st-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
+#statistika .st-tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+#statistika .st-tile b{display:block;font-size:38px;line-height:1.1;color:var(--c1);font-weight:600}
+#statistika .st-tile span{font-size:13.5px;color:var(--muted)}
+#statistika .st-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+#statistika .st-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+#statistika .st-card h3{font-size:17px;margin-bottom:16px;color:var(--teal)}
+#statistika .st-cols{display:flex;align-items:flex-end;gap:5px;height:170px}
+#statistika .st-col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;min-width:0}
+#statistika .st-col b{font-size:11px}#statistika .st-col i{display:block;width:100%;max-width:34px;background:var(--teal);border-radius:5px 5px 0 0;min-height:3px}
+#statistika .st-col small{font-size:10px;color:var(--muted);white-space:nowrap}
+#statistika .st-bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+#statistika .st-bars li{display:grid;grid-template-columns:minmax(110px,44%) 1fr auto;gap:10px;align-items:center;font-size:14px}
+#statistika .st-track{height:11px;border-radius:11px;background:var(--band);overflow:hidden}#statistika .st-track i{display:block;height:100%;background:var(--teal);border-radius:11px}
+#statistika .st-bars em{font-style:normal;font-weight:700;text-align:right;white-space:nowrap}
+#statistika .st-classes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+#statistika .st-empty{color:var(--muted);font-size:14px;margin:0}
+@media(max-width:900px){#statistika .st-tiles{grid-template-columns:1fr 1fr}#statistika .st-grid,#statistika .st-classes{grid-template-columns:1fr}#statistika .st-bars li{grid-template-columns:1fr auto}#statistika .st-track{grid-column:1/-1;grid-row:2}}
+</style>
+<div class="wrap">
+<div class="sec-head"><div class="tag">Η βιβλιοθήκη σε αριθμούς</div><h2 id="stat-title">Στατιστικά βιβλιοθήκης</h2><p>Πόσα βιβλία έχουμε, πόσο διαβάζουμε και ποια είναι τα αγαπημένα μας.</p></div>
+<div id="st-body"><p class="st-empty">Φόρτωση στατιστικών…</p></div>
+</div>
+<script>
+(function(){
+var API=(typeof CATALOG_API!=='undefined'?CATALOG_API:'https://tetartosyrou.pythonanywhere.com/api/books').replace(/\/books$/,'/stats');
+var body=document.getElementById('st-body');
+function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML}
+function cols(a){return '<div class="st-cols">'+a.map(function(x){return '<div class="st-col"><b>'+x.value+'</b><i style="height:'+Math.max(x.pct,2)+'%"></i><small>'+esc(x.label)+'</small></div>'}).join('')+'</div>'}
+function bars(a,label,unit){if(!a.length)return '<p class="st-empty">Δεν υπάρχουν δανεισμοί ακόμη.</p>';return '<ul class="st-bars">'+a.map(function(x){return '<li><span>'+esc(label(x))+'</span><span class="st-track"><i style="width:'+x.pct+'%"></i></span><em>'+x.value+(unit||'')+'</em></li>'}).join('')+'</ul>'}
+function tile(n,t){return '<div class="st-tile"><b>'+n+'</b><span>'+t+'</span></div>'}
+fetch(API).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(s){
+ var h='<div class="st-tiles">'+tile(s.titles,'τίτλοι βιβλίων')+tile(s.copies,'αντίτυπα συνολικά')+tile(s.loans_this_month,'δανεισμοί αυτόν τον μήνα (προηγ.: '+s.loans_last_month+')')+tile(s.readers,'παιδιά έχουν δανειστεί βιβλία')+'</div>';
+ h+='<div class="st-grid"><div class="st-card"><h3>Δανεισμοί ανά εβδομάδα (12 εβδομάδες)</h3>'+cols(s.weekly)+'</div><div class="st-card"><h3>Δανεισμοί ανά μήνα</h3>'+cols(s.monthly)+'</div></div>';
+ h+='<div class="st-card" style="margin-bottom:20px"><h3>Τα 10 πιο δημοφιλή βιβλία</h3>'+bars(s.top_books,function(x){return x.title})+'</div>';
+ h+='<div class="st-classes">'+s.top_by_class.map(function(g){return '<div class="st-card"><h3>'+esc(g['class'])+' τάξη</h3>'+bars(g.books,function(x){return x.title})+'</div>'}).join('')+'</div>';
+ var sec=s.sections.slice().sort(function(a,b){return b.loans-a.loans});
+ h+='<div class="st-card"><h3>Ποια τμήματα δανείζονται περισσότερο</h3>'+bars(sec.map(function(x){return {section:x.section,value:x.loans,pct:x.pct,ps:x.per_student}}),function(x){return 'Τμήμα '+x.section+' · '+String(x.ps).replace('.',',')+' ανά μαθητή'},' δανεισμοί')+'</div>';
+ body.innerHTML=h;
+}).catch(function(){body.innerHTML='<p class="st-empty">Τα στατιστικά δεν είναι διαθέσιμα αυτή τη στιγμή.</p>'});
+})();
+</script>
+</section>
 <section id="protasi-noemvrh" class="tint" aria-labelledby="noem-title">
   <div class="wrap">
     <div class="noem">
