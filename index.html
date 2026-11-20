@@ -280,23 +280,30 @@ fetch(API).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(s){
 </script>
 </section>
 <section id="protasi-noemvrh" class="tint" aria-labelledby="noem-title">
+<style>
+.prot-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.prot-tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 24px;border-radius:30px;font-size:14px;font-weight:600}
+.prot-tab[aria-selected=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.prot-photos{display:grid;gap:18px}
+.prot-h{font-size:22px;margin-bottom:16px}
+.prot-panel[hidden]{display:none}
+#protasi-noemvrh .noem-list li:nth-child(4){border-left-color:var(--c4)}
+#protasi-noemvrh .noem-list li:nth-child(5){border-left-color:var(--c5)}
+</style>
   <div class="wrap">
-    <div class="noem">
-      <figure class="noem-photo">
-        <img src="images/protasi_noem.jpg" width="1800" height="1350" loading="lazy" alt="Τρία παιδικά βιβλία για το Πολυτεχνείο και τη δημοκρατία: «Μαμά, τι έγινε στο Πολυτεχνείο;», «Λίγα γαρίφαλα για το Πολυτεχνείο» και «Τι είναι δημοκρατία»" onerror="this.closest('.noem').classList.add('no-photo');this.closest('figure').remove()">
-      </figure>
-      <div class="noem-text">
-        <div class="tag">Προτείνουν οι υπεύθυνες δασκάλες της βιβλιοθήκης</div>
-        <h2 id="noem-title">Πολυτεχνείο και δημοκρατία</h2>
-        <p>Τον Νοέμβρη θυμόμαστε την εξέγερση του Πολυτεχνείου, στις 17 Νοεμβρίου 1973. Τρία βιβλία της βιβλιοθήκης μας βοηθούν τα παιδιά να καταλάβουν τι έγινε τότε και τι σημαίνει δημοκρατία.</p>
-        <ul class="noem-list">
-          <li><strong>Μαμά, τι έγινε στο Πολυτεχνείο;</strong><span>Μαρία Καλογεράκη · Εκδόσεις Σμυρνιωτάκη</span></li>
-          <li><strong>Λίγα γαρίφαλα για το Πολυτεχνείο</strong><span>Κατερίνα Μουρίκη · εικονογράφηση Νίκος Χριστοφοράκης · Εκδόσεις Διάπλαση</span></li>
-          <li><strong>Τι είναι δημοκρατία</strong><span>Μαρίζα Ντεκάστρο · εικόνες Χρήστος Κουρτόγλου · Εκδόσεις Μεταίχμιο</span></li>
-        </ul>
-      </div>
+    <div class="sec-head">
+      <div class="tag" style="color:var(--c1)">Προτείνουν οι υπεύθυνες δασκάλες της βιβλιοθήκης</div>
+      <h2 id="noem-title">Προτάσεις ανά τάξη</h2>
+      <p>Διάλεξε την τάξη σου και δες τα βιβλία που σου προτείνουμε αυτόν τον μήνα.</p>
     </div>
+    <div class="prot-tabs" role="tablist" aria-label="Τάξη"><button type="button" class="prot-tab" role="tab" id="prot-tab-ab" aria-controls="prot-ab" aria-selected="true" tabindex="0">Α΄ – Β΄</button><button type="button" class="prot-tab" role="tab" id="prot-tab-cd" aria-controls="prot-cd" aria-selected="false" tabindex="-1">Γ΄ – Δ΄</button><button type="button" class="prot-tab" role="tab" id="prot-tab-es" aria-controls="prot-es" aria-selected="false" tabindex="-1">Ε΄ – ΣΤ΄</button></div>
+    <div class="noem prot-panel" role="tabpanel" id="prot-ab" aria-labelledby="prot-tab-ab"><div class="prot-photos"><figure class="noem-photo"><img src="images/protasi_A_B.jpg" width="1800" height="1350" loading="lazy" alt="Πέντε βιβλία για τα δικαιώματα των παιδιών: «Ικμπάλ», «Ανθρώπινα Δικαιώματα», «Έχω δικαίωμα», «Φίλοι σε ξένο τόπο» και «Όλου του κόσμου τα παιδιά»"></figure></div><div class="noem-text"><h3 class="prot-h">Για την Α΄ – Β΄ τάξη</h3><ul class="noem-list"><li><strong>Ικμπάλ</strong><span>Φραντσέσκο Ντ’ Αντάμο · Εκδόσεις Πατάκη</span></li><li><strong>Ανθρώπινα Δικαιώματα</strong><span>Μεγάλη Εγκυκλοπαίδεια των Παιδιών · Βιβλιοθήκη Γνώσης, Η Καθημερινή</span></li><li><strong>Έχω δικαίωμα</strong><span>Unicef · συλλογικό έργο</span></li><li><strong>Φίλοι σε ξένο τόπο</strong><span>Έλενα Αρτζανίδου · εικονογράφηση Λιάνα Δενεζάκη · Εκδόσεις Διάπλαση</span></li><li><strong>Όλου του κόσμου τα παιδιά</strong><span>Γιόλα Δαμιανού-Παπαδοπούλου · Εκδόσεις Πατάκη</span></li></ul></div></div><div class="noem prot-panel" role="tabpanel" id="prot-cd" aria-labelledby="prot-tab-cd" hidden><div class="prot-photos"><figure class="noem-photo"><img src="images/protasi_C_D.jpg" width="1800" height="1350" loading="lazy" alt="Δύο βιβλία: «Πώς να κρύψεις ένα λιοντάρι από τη γιαγιά» και «Είσαι ένα θαύμα»"></figure></div><div class="noem-text"><h3 class="prot-h">Για την Γ΄ – Δ΄ τάξη</h3><ul class="noem-list"><li><strong>Πώς να κρύψεις ένα λιοντάρι από τη γιαγιά</strong><span>Helen Stephens · Εκδόσεις Ίκαρος</span></li><li><strong>Είσαι ένα θαύμα</strong><span>R. J. Palacio · Εκδόσεις Παπαδόπουλος</span></li></ul></div></div><div class="noem prot-panel" role="tabpanel" id="prot-es" aria-labelledby="prot-tab-es" hidden><div class="prot-photos"><figure class="noem-photo"><img src="images/protasi_E_ST.jpg" width="1800" height="1350" loading="lazy" alt="Δύο βιβλία: «Μικρές ιστορίες» και «Η κατάσκοπος των βιβλίων»"></figure><figure class="noem-photo"><img src="images/protasi_E_ST_2.jpg" width="1800" height="1350" loading="lazy" alt="Δύο βιβλία: «Μήνυμα στο κινητό» και «Το αίνιγμα του πύργου»"></figure></div><div class="noem-text"><h3 class="prot-h">Για την Ε΄ – ΣΤ΄ τάξη</h3><ul class="noem-list"><li><strong>Μήνυμα στο κινητό</strong><span>Ιωάννα Κυρίτση-Τζιώτη · Εκδόσεις Παπαδόπουλος</span></li><li><strong>Το αίνιγμα του πύργου</strong><span>Κίρα Σίνου · Εκδόσεις Κέδρος</span></li><li><strong>Μικρές ιστορίες</strong><span>Σοφία Φίλντιση · Εκδόσεις Πατάκη</span></li><li><strong>Η κατάσκοπος των βιβλίων</strong><span>Λίνα Μουσιώνη · εικονογράφηση Βασίλης Γρίβας · Εκδόσεις Μεταίχμιο</span></li></ul></div></div>
   </div>
+<script>
+(function(){var tabs=[].slice.call(document.querySelectorAll('.prot-tab'));
+function show(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){show(t)});t.addEventListener('keydown',function(e){var n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:-1;if(n<0)return;n=(n+tabs.length)%tabs.length;tabs[n].focus();show(tabs[n]);e.preventDefault()})})})();
+</script>
 </section>
 <section id="koinotita" aria-labelledby="koin-title">
   <div class="wrap">
