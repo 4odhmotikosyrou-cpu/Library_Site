@@ -253,6 +253,8 @@ section{padding:60px 0}
 #statistika .st-bars em{font-style:normal;font-weight:700;text-align:right;white-space:nowrap}
 #statistika .st-classes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
 #statistika .st-empty{color:var(--muted);font-size:14px;margin:0}
+#statistika .st-grid>*,#statistika .st-classes>*{min-width:0}#statistika .st-card{overflow:hidden}
+@media(max-width:600px){#statistika .st-cols{gap:3px}#statistika .st-col b{font-size:9px}#statistika .st-col small{font-size:9px}#statistika .st-col:not(:nth-child(3n+1)) small{visibility:hidden}#statistika .st-card{padding:18px}}
 @media(max-width:900px){#statistika .st-tiles{grid-template-columns:1fr 1fr}#statistika .st-grid,#statistika .st-classes{grid-template-columns:1fr}#statistika .st-bars li{grid-template-columns:1fr auto}#statistika .st-track{grid-column:1/-1;grid-row:2}}
 </style>
 <div class="wrap">
