@@ -234,6 +234,100 @@ section{padding:60px 0}
     </div><noscript><p>Ενεργοποίησε τη JavaScript για να δεις τα πιο διαβασμένα βιβλία ανά τάξη.</p></noscript><p class="note">Η λίστα προκύπτει από τους δανεισμούς των μαθητών κάθε τάξης. Όταν δεν υπάρχουν ακόμη αρκετοί δανεισμοί, συμπληρώνεται με βιβλία της βιβλιοθήκης. Τη διαθεσιμότητα κάθε τίτλου την ελέγχουμε στον <a href="#katalogos">κατάλογο της βιβλιοθήκης</a>.</p>
   </div>
 </section>
+<style id="wall-style">
+.wall-open{margin-top:12px;background:none;border:1px solid var(--teal);color:var(--teal);border-radius:30px;padding:7px 16px;font-size:13px;font-weight:600}
+.wall-open:hover{background:var(--teal);color:#fff}
+dialog.wall{border:0;border-radius:20px;padding:0;width:min(760px,calc(100% - 24px));max-height:92vh;background:var(--bg);color:var(--ink);box-shadow:0 20px 60px #0005}
+dialog.wall::backdrop{background:#173f3b99}
+.wall-in{padding:28px;overflow:auto;max-height:92vh}
+.wall-in h2{font-size:24px;margin-bottom:4px;padding-right:44px}
+.wall-sub{color:var(--muted);font-size:14px;margin-bottom:20px}
+.wall-close{position:absolute;right:14px;top:12px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:20px;line-height:1}
+.wall-posts{display:grid;gap:14px;margin-bottom:24px}
+.wall-post{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.wall-post img{display:block;max-width:100%;max-height:360px;border-radius:10px;margin-bottom:10px}
+.wall-post p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 8px}
+.wall-post small{color:var(--muted);font-weight:600}
+.wall-form{background:var(--band);border-radius:14px;padding:18px;display:grid;gap:12px}
+.wall-form h3{font-size:17px}
+.wall-form label{font-size:14px;font-weight:600;display:grid;gap:5px}
+.wall-form input[type=text],.wall-form textarea,.wall-form input[type=file]{width:100%;border:1px solid #adbdb2;border-radius:10px;background:#fff;padding:10px 12px;font:16px/1.4 var(--font-body)}
+.wall-form input[name=code]{font:600 20px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase}
+.wall-msg{font-size:14px;font-weight:600;margin:0}.wall-msg.ok{color:#1f5a3a}.wall-msg.err{color:#a24730}
+.wall-note{font-size:12.5px;color:var(--muted)}
+</style>
+<dialog class="wall" id="wall" aria-labelledby="wall-title"><div class="wall-in"><button type="button" class="wall-close" id="wall-close" aria-label="Κλείσιμο">×</button>
+<h2 id="wall-title"></h2><p class="wall-sub">Ζωγραφιές και κείμενα από παιδιά που διάβασαν το βιβλίο. <button type="button" class="wall-link" id="wall-jump">Γράψε ανάρτηση ↓</button></p>
+<div class="wall-posts" id="wall-posts"></div><button type="button" class="button wall-more" id="wall-more" hidden>Δες περισσότερες αναρτήσεις</button>
+<form class="wall-form" id="wall-form" novalidate><h3 id="wall-form-title">Διάβασες το βιβλίο; Άφησε κι εσύ μια ανάρτηση!</h3>
+<label>Ο κωδικός σου (6 χαρακτήρες)<input type="text" name="code" maxlength="8" autocomplete="off" required></label>
+<p class="wall-note">Απάντησε σε όσα από τα παρακάτω θέλεις. Δεν είναι υποχρεωτικό να απαντήσεις σε όλα.</p>
+<div id="wall-fields" class="wall-fields"></div>
+<label>Ό,τι άλλο θέλω να πω (προαιρετικό)<textarea name="text" rows="3" maxlength="600"></textarea></label>
+<label>Ζωγραφιά (φωτογράφισέ τη, προαιρετικό)<input type="file" name="image" accept="image/*"></label>
+<label class="wall-check" id="wall-remove-wrap" hidden><input type="checkbox" id="wall-remove"> Να αφαιρεθεί η ζωγραφιά που έχω ανεβάσει</label>
+<div class="wall-btns"><button class="button" type="submit" id="wall-submit">Ανάρτηση</button><button type="button" class="wall-link" id="wall-delete" hidden>Διαγραφή της ανάρτησής μου</button></div>
+<button type="button" class="wall-link" id="wall-mine">Έχω ήδη αναρτήσει· θέλω να την αλλάξω ή να τη σβήσω</button>
+<p class="wall-msg" id="wall-msg" role="status" aria-live="polite"></p>
+<p class="wall-note">Μπορείς να αναρτήσεις μόνο αν έχεις δανειστεί το βιβλίο. Η ανάρτηση εμφανίζεται αφού τη δουν οι δασκάλες, και ξανά αφού την αλλάξεις. Δίπλα της φαίνεται μόνο το μικρό σου όνομα και η τάξη σου.</p></form></div></dialog>
+<style>
+.wall-fields{display:grid;gap:12px}
+.wall-fields select{width:100%;border:1px solid #adbdb2;border-radius:10px;background:#fff;padding:10px 12px;font:16px/1.4 var(--font-body)}
+.wall-fields input[type=text]{width:100%;border:1px solid #adbdb2;border-radius:10px;background:#fff;padding:10px 12px;font:16px/1.4 var(--font-body)}
+.wall-fields label{font-size:14px;font-weight:600;display:grid;gap:5px}
+.wall-link{background:none;border:0;padding:4px 0;color:var(--teal);font:600 14px var(--font-body);text-decoration:underline;text-underline-offset:4px;text-align:left}
+.wall-btns{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.wall-check[hidden]{display:none!important}.wall-check{display:flex!important;grid-template-columns:none!important;gap:8px;align-items:center;font-weight:400!important}
+.wall-more{margin:0 auto 24px;display:flex!important;background:var(--surface)!important;color:var(--teal)!important;border:1px solid var(--teal)!important}.wall-more[hidden]{display:none!important}.wall-ans{margin:0 0 4px;font-size:15px}.wall-ans b{color:var(--teal)}
+.wall-stars{color:#c88a00;letter-spacing:2px}
+</style>
+<script>
+(function(){
+const dlg=document.getElementById('wall');if(!dlg)return;
+const base=()=>CATALOG_API,api=()=>CATALOG_API.replace(/\/books$/,'');let cur=null,fields=null,mode='new';
+const $=id=>document.getElementById(id);
+function buildFields(f){const box=$('wall-fields');box.replaceChildren();
+ f.fields.forEach(x=>{const l=document.createElement('label');l.append(x.label);let i;
+  if(x.kind==='choice'){i=document.createElement('select');i.add(new Option('—',''));f.choices.forEach(c=>i.add(new Option(c,c)))}
+  else if(x.kind==='stars'){i=document.createElement('select');i.add(new Option('—',''));[1,2,3,4,5].forEach(n=>i.add(new Option('★'.repeat(n)+'☆'.repeat(5-n),String(n))))}
+  else{i=document.createElement('input');i.type='text';i.maxLength=f.max_answer}
+  i.name='f_'+x.key;l.appendChild(i);box.appendChild(l)})}
+function loadFields(){if(fields)return Promise.resolve();return fetch(api()+'/post-fields').then(r=>r.json()).then(f=>{fields=f;buildFields(f)})}
+function setMode(m){mode=m;$('wall-submit').textContent=m==='edit'?'Αποθήκευση αλλαγών':'Ανάρτηση';$('wall-delete').hidden=m!=='edit';$('wall-remove-wrap').hidden=m!=='edit';$('wall-form-title').textContent=m==='edit'?'Η ανάρτησή μου':'Διάβασες το βιβλίο; Άφησε κι εσύ μια ανάρτηση!'}
+function msg(t,ok){const m=$('wall-msg');m.className='wall-msg'+(ok===true?' ok':ok===false?' err':'');m.textContent=t||''}
+function render(posts,append){const box=$('wall-posts');if(!append)box.replaceChildren();
+ if(!posts.length&&!append){const p=document.createElement('p');p.className='wall-sub';p.textContent='Δεν υπάρχουν ακόμη αναρτήσεις. Γίνε ο πρώτος!';box.appendChild(p);return}
+ posts.forEach(x=>{const d=document.createElement('div');d.className='wall-post';
+  if(x.image){const i=document.createElement('img');i.loading='lazy';i.alt='Ζωγραφιά από '+x.name;i.src=x.image;d.appendChild(i)}
+  (x.answers||[]).forEach(a=>{const p=document.createElement('p');p.className='wall-ans';const b=document.createElement('b');b.textContent=a.label+': ';p.appendChild(b);
+   if(a.kind==='stars'){const s=document.createElement('span');s.className='wall-stars';const n=parseInt(a.value)||0;s.textContent='★'.repeat(n)+'☆'.repeat(5-n);s.setAttribute('aria-label',n+' στα 5');p.appendChild(s)}else p.append(a.value);d.appendChild(p)});
+  if(x.text){const p=document.createElement('p');p.textContent=x.text;d.appendChild(p)}
+  const s=document.createElement('small');s.textContent='— '+x.name+(x.class?', '+x.class+' τάξη':'');d.appendChild(s);box.appendChild(d)})}
+let loaded=0;
+function refresh(more){const off=more?loaded:0;return fetch(base()+'/'+cur.id+'/posts?limit=6&offset='+off).then(r=>r.json()).then(j=>{render(j.posts||[],!!more);loaded=off+(j.posts||[]).length;$('wall-more').hidden=!j.has_more}).catch(()=>{$('wall-posts').innerHTML='<p class="wall-sub">Ο πίνακας δεν είναι διαθέσιμος αυτή τη στιγμή.</p>'})}
+window.openWall=function(b){cur=b;setMode('new');msg('');$('wall-form').reset();$('wall-title').textContent='Πίνακας ανακοινώσεων: '+b.title;
+ $('wall-posts').innerHTML='<p class="wall-sub">Φόρτωση…</p>';loadFields().catch(()=>msg('Η φόρμα δεν φόρτωσε. Δοκίμασε ξανά.',false));refresh();
+ dlg.showModal?dlg.showModal():dlg.setAttribute('open','')};
+$('wall-more').addEventListener('click',()=>refresh(true));
+$('wall-jump').addEventListener('click',()=>{$('wall-form').scrollIntoView({behavior:'smooth',block:'start'});const c=$('wall-form').elements.code;setTimeout(()=>c.focus({preventScroll:true}),400)});
+$('wall-close').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+function codeData(){const f=new FormData();f.append('code',$('wall-form').elements.code.value);return f}
+function post(path,body){return fetch(base()+'/'+cur.id+'/posts'+path,{method:'POST',body}).then(r=>r.json().then(j=>({ok:r.ok,j})))}
+$('wall-mine').addEventListener('click',()=>{if(!$('wall-form').elements.code.value.trim()){msg('Γράψε πρώτα τον κωδικό σου.',false);return}
+ msg('Αναζήτηση…');post('/mine',codeData()).then(({ok,j})=>{if(!ok){msg(j.message,false);return}
+  const el=$('wall-form').elements;fields.fields.forEach(x=>{el['f_'+x.key].value=(j.answers||{})[x.key]||''});el.text.value=j.text||'';setMode('edit');
+  msg(j.approved?'Βρέθηκε η ανάρτησή σου. Μετά από αλλαγή θα την ξαναδούν οι δασκάλες.':'Βρέθηκε η ανάρτησή σου (περιμένει έγκριση).',true)})
+ .catch(()=>msg('Δεν έγινε σύνδεση. Δοκίμασε ξανά.',false))});
+$('wall-delete').addEventListener('click',()=>{if(!confirm('Να διαγραφεί οριστικά η ανάρτησή σου;'))return;
+ post('/delete',codeData()).then(({ok,j})=>{msg(j.message,ok);if(ok){$('wall-form').reset();setMode('new');refresh()}}).catch(()=>msg('Δεν έγινε σύνδεση. Δοκίμασε ξανά.',false))});
+$('wall-form').addEventListener('submit',function(e){e.preventDefault();if(!cur)return;
+ const f=new FormData(this),btn=$('wall-submit');if($('wall-remove').checked)f.append('remove_image','1');
+ msg('Αποστολή…');btn.disabled=true;
+ post(mode==='edit'?'/edit':'',f).then(({ok,j})=>{msg(j.message||(ok?'Εστάλη.':'Κάτι πήγε στραβά.'),ok);if(ok){this.reset();setMode('new');refresh()}})
+ .catch(()=>msg('Δεν έγινε σύνδεση. Δοκίμασε ξανά.',false)).finally(()=>{btn.disabled=false})});
+})();
+</script>
 <section id="statistika" aria-labelledby="stat-title">
 <style>
 #statistika .st-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px}
@@ -703,7 +797,8 @@ function card(b){
   const av=document.createElement('span');const ok=b.available>0;av.className='cat-avail'+(ok?'':' out');av.textContent=ok?'Διαθέσιμο ('+b.available+'/'+b.quantity+')':'Δανεισμένο';
   const tags=document.createElement('div');tags.className='cat-tags';
   b.categories.concat(b.classes.map(c=>c+' τάξη')).forEach(t=>{const s=document.createElement('span');s.className='cat-tag';s.textContent=t;tags.appendChild(s)});
-  body.append(h,au,meta,av,tags);a.append(cv,body);return a;
+  const wall=document.createElement('button');wall.type='button';wall.className='wall-open';wall.textContent='🖍 Πίνακας ανακοινώσεων';wall.addEventListener('click',()=>window.openWall(b));
+  body.append(h,au,meta,av,tags,wall);a.append(cv,body);return a;
 }
 function renderMore(){
   const frag=document.createDocumentFragment();
