@@ -346,7 +346,7 @@ $('wall-form').addEventListener('submit',function(e){e.preventDefault();if(!cur)
 #statistika .st-track{height:11px;border-radius:11px;background:var(--band);overflow:hidden}#statistika .st-track i{display:block;height:100%;background:var(--teal);border-radius:11px}
 #statistika .st-bars em{font-style:normal;font-weight:700;text-align:right;white-space:nowrap}
 #statistika .st-classes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
-#statistika .st-empty{color:var(--muted);font-size:14px;margin:0}
+#statistika .st-more-wrap{display:flex;justify-content:center;margin:6px 0 24px}#statistika .st-more{background:var(--surface);color:var(--teal);border:1px solid var(--teal);border-radius:30px;padding:12px 28px;font:600 15px var(--font-body)}#statistika .st-more:hover{background:var(--teal);color:#fff}#statistika #st-extra[hidden]{display:none}#statistika .st-empty{color:var(--muted);font-size:14px;margin:0}
 #statistika .st-grid>*,#statistika .st-classes>*{min-width:0}#statistika .st-card{overflow:hidden}
 @media(max-width:600px){#statistika .st-cols{gap:3px}#statistika .st-col b{font-size:9px}#statistika .st-col small{font-size:9px}#statistika .st-col:not(:nth-child(3n+1)) small{visibility:hidden}#statistika .st-card{padding:18px}}
 @media(max-width:900px){#statistika .st-tiles{grid-template-columns:1fr 1fr}#statistika .st-grid,#statistika .st-classes{grid-template-columns:1fr}#statistika .st-bars li{grid-template-columns:1fr auto}#statistika .st-track{grid-column:1/-1;grid-row:2}}
@@ -365,12 +365,17 @@ function bars(a,label,unit){if(!a.length)return '<p class="st-empty">Δεν υπ
 function tile(n,t){return '<div class="st-tile"><b>'+n+'</b><span>'+t+'</span></div>'}
 fetch(API).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(s){
  var h='<div class="st-tiles">'+tile(s.titles,'τίτλοι βιβλίων')+tile(s.copies,'αντίτυπα συνολικά')+tile(s.loans_this_month,'δανεισμοί αυτόν τον μήνα (προηγ.: '+s.loans_last_month+')')+tile(s.readers,'παιδιά έχουν δανειστεί βιβλία')+'</div>';
- h+='<div class="st-grid"><div class="st-card"><h3>Δανεισμοί ανά εβδομάδα (12 εβδομάδες)</h3>'+cols(s.weekly)+'</div><div class="st-card"><h3>Δανεισμοί ανά μήνα</h3>'+cols(s.monthly)+'</div></div>';
+ h+='<div class="st-card" style="margin-bottom:20px"><h3>Δανεισμοί ανά εβδομάδα (12 εβδομάδες)</h3>'+cols(s.weekly)+'</div>';
  h+='<div class="st-card" style="margin-bottom:20px"><h3>Τα 10 πιο δημοφιλή βιβλία</h3>'+bars(s.top_books,function(x){return x.title})+'</div>';
+ h+='<div class="st-more-wrap"><button type="button" class="st-more" id="st-more" aria-expanded="false" aria-controls="st-extra">Δες περισσότερα στατιστικά ▾</button></div>';
+ h+='<div id="st-extra" hidden>';
+ h+='<div class="st-card" style="margin-bottom:20px"><h3>Δανεισμοί ανά μήνα</h3>'+cols(s.monthly)+'</div>';
  h+='<div class="st-classes">'+s.top_by_class.map(function(g){return '<div class="st-card"><h3>'+esc(g['class'])+' τάξη</h3>'+bars(g.books,function(x){return x.title})+'</div>'}).join('')+'</div>';
  var sec=s.sections.slice().sort(function(a,b){return b.loans-a.loans});
  h+='<div class="st-card"><h3>Ποια τμήματα δανείζονται περισσότερο</h3>'+bars(sec.map(function(x){return {section:x.section,value:x.loans,pct:x.pct,ps:x.per_student}}),function(x){return 'Τμήμα '+x.section+' · '+String(x.ps).replace('.',',')+' ανά μαθητή'},' δανεισμοί')+'</div>';
+ h+='</div>';
  body.innerHTML=h;
+ var mb=document.getElementById('st-more'),ex=document.getElementById('st-extra');if(mb)mb.addEventListener('click',function(){var o=ex.hidden;ex.hidden=!o;mb.setAttribute('aria-expanded',String(o));mb.textContent=o?'Λιγότερα στατιστικά ▴':'Δες περισσότερα στατιστικά ▾'});
 }).catch(function(){body.innerHTML='<p class="st-empty">Τα στατιστικά δεν είναι διαθέσιμα αυτή τη στιγμή.</p>'});
 })();
 </script>
@@ -1020,6 +1025,11 @@ const subject=document.getElementById('signup-subject'),workshop=document.getEle
 const HINT='Διάλεξε το εργαστήρι και μετά την τάξη του παιδιού.';
 const dp=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Athens',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 let group=null;
+const WAPI=CATALOG_API.replace(/\/books$/,'/workshops');let spots={};
+function isFull(){return !!(spots[evSel.value]&&spots[evSel.value].full)}
+function paintOptions(){[].slice.call(evSel.options).forEach(o=>{if(!o.value)return;if(!o.dataset.t)o.dataset.t=o.textContent;const s=spots[o.value];o.textContent=o.dataset.t+(s&&s.full?' · ΟΙ ΘΕΣΕΙΣ ΣΥΜΠΛΗΡΩΘΗΚΑΝ':'')})}
+function loadSpots(){return fetch(WAPI).then(r=>r.json()).then(j=>{spots=j;paintOptions();update()}).catch(()=>{})}
+loadSpots();
 function fillClasses(){
   sel.replaceChildren();
   const first=document.createElement('option');first.value='';
@@ -1034,9 +1044,10 @@ function update(){
   if(!group){info.textContent=HINT;workshop.value='';return}
   workshop.value=group.title+' – '+group.when;
   if(group.date<dp){info.textContent='Οι δηλώσεις για το εργαστήρι της '+group.short+' έχουν λήξει.';info.classList.add('closed');btn.disabled=true;return}
+  if(isFull()){info.textContent='Οι θέσεις για το εργαστήρι της '+group.short+' συμπληρώθηκαν ('+spots[evSel.value].capacity+'/'+spots[evSel.value].capacity+'). Δεν δεχόμαστε άλλες δηλώσεις.';info.classList.add('closed');btn.disabled=true;return}
   if(!sel.value){info.textContent='Εργαστήρι '+group.short+' ('+group.when+'). Διάλεξε την τάξη του παιδιού ('+group.classes.join(', ')+').';return}
   subject.value='Δήλωση συμμετοχής: εργαστήρι '+group.short+' ('+sel.value+' τάξη)';
-  info.textContent='Η τάξη '+sel.value+' συμμετέχει στο εργαστήρι: '+group.when+', με την κ. Ειρήνη Παλιουδάκη.';info.classList.add('ready');
+  info.textContent='Η τάξη '+sel.value+' συμμετέχει στο εργαστήρι: '+group.when+', με την κ. Ειρήνη Παλιουδάκη.'+(spots[evSel.value]?' Απομένουν '+spots[evSel.value].left+' θέσεις.':'');info.classList.add('ready');
 }
 evSel.addEventListener('change',()=>{group=GROUPS[evSel.value]||null;fillClasses();update()});
 sel.addEventListener('change',update);
@@ -1044,12 +1055,22 @@ document.querySelectorAll('.event-link[data-event]').forEach(a=>a.addEventListen
 form.addEventListener('submit',async e=>{
   e.preventDefault();if(!group||!sel.value){update();(group?sel:evSel).focus();return}
   status.textContent='';status.className='contact-status';btn.disabled=true;btn.textContent='Αποστολή…';
-  const child=document.getElementById('signup-child').value.trim(),g=group;
+  const child=document.getElementById('signup-child').value.trim(),g=group,key=evSel.value;
   try{
-    const r=await fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
-    const d=await r.json().catch(()=>({}));
-    if(r.ok&&d.success){form.reset();group=null;fillClasses();update();status.textContent='Η συμμετοχή του/της '+child+' δηλώθηκε στο εργαστήρι της '+g.short+'. Σας ευχαριστούμε!';status.classList.add('ok')}
-    else throw new Error(d.message||r.status);
+    // 1) κράτηση θέσης στον διαχειριστικό server (εκεί ελέγχεται το όριο)
+    const fd=new FormData(form);
+    let rr,rd;
+    try{rr=await fetch(WAPI+'/'+key+'/signup',{method:'POST',body:fd});rd=await rr.json().catch(()=>({}))}
+    catch(_){throw new Error('network')}
+    if(!rr.ok){
+      if(rd.full){spots[key]=Object.assign(spots[key]||{capacity:18},{full:true,left:0});paintOptions();update();status.textContent=rd.message;status.classList.add('err');return}
+      status.textContent=rd.message||'Η δήλωση δεν καταχωρήθηκε. Δοκίμασε ξανά.';status.classList.add('err');return}
+    // 2) ειδοποίηση με email (αν αποτύχει, η θέση έχει ήδη κρατηθεί)
+    try{await fetch(form.action,{method:'POST',headers:{Accept:'application/json'},body:fd})}catch(_){}
+    form.reset();group=null;fillClasses();update();
+    const okMsg='Η συμμετοχή του/της '+child+' δηλώθηκε στο εργαστήρι της '+g.short+'. Σας ευχαριστούμε!';
+    const showOk=()=>{status.textContent=okMsg;status.className='contact-status ok'};showOk();
+    loadSpots().then(showOk);
   }catch(err){status.textContent='Η δήλωση δεν στάλθηκε. Δοκίμασε ξανά ή γράψε μας στο library4osyros@gmail.com.';status.classList.add('err')}
   finally{btn.disabled=false;btn.innerHTML=label}
 });
