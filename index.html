@@ -366,7 +366,7 @@ function tile(n,t){return '<div class="st-tile"><b>'+n+'</b><span>'+t+'</span></
 fetch(API).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(s){
  var h='<div class="st-tiles">'+tile(s.titles,'τίτλοι βιβλίων')+tile(s.copies,'αντίτυπα συνολικά')+tile(s.loans_this_month,'δανεισμοί αυτόν τον μήνα (προηγ.: '+s.loans_last_month+')')+tile(s.readers,'παιδιά έχουν δανειστεί βιβλία')+'</div>';
  h+='<div class="st-card" style="margin-bottom:20px"><h3>Δανεισμοί ανά εβδομάδα (12 εβδομάδες)</h3>'+cols(s.weekly)+'</div>';
- h+='<div class="st-card" style="margin-bottom:20px"><h3>Τα 10 πιο δημοφιλή βιβλία</h3>'+bars(s.top_books,function(x){return x.title})+'</div>';
+ h+='<div class="st-card" style="margin-bottom:20px"><h3>Τα 6 πιο δημοφιλή βιβλία</h3>'+bars(s.top_books,function(x){return x.title})+'</div>';
  h+='<div class="st-more-wrap"><button type="button" class="st-more" id="st-more" aria-expanded="false" aria-controls="st-extra">Δες περισσότερα στατιστικά ▾</button></div>';
  h+='<div id="st-extra" hidden>';
  h+='<div class="st-card" style="margin-bottom:20px"><h3>Δανεισμοί ανά μήνα</h3>'+cols(s.monthly)+'</div>';
