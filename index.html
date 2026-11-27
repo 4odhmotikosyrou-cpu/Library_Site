@@ -784,7 +784,7 @@ const CATALOG_API='https://tetartosyrou.pythonanywhere.com/api/books'; // άλλ
 (function(){
 const $=id=>document.getElementById(id);
 const qEl=$('cat-q'),catEl=$('cat-category'),sortEl=$('cat-sort'),classesEl=$('cat-classes'),countEl=$('cat-count'),gridEl=$('cat-grid'),moreEl=$('cat-more');
-const PAGE=6;let all=[],filtered=[],shown=0;
+const PAGE=4;let all=[],filtered=[],shown=0;
 const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ');
 const colors=['--c1','--c3','--c4','--c5','--c6','--c2'];
 function secure(u){try{const x=new URL(u,CATALOG_API);if(x.protocol==='http:'&&location.protocol==='https:')x.protocol='https:';return x.href}catch(e){return u}}
